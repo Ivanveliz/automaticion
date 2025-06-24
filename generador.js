@@ -12,7 +12,7 @@ const carpeta = path.join(__dirname, 'imagenes');
 if (!fs.existsSync(carpeta)) {
     fs.mkdirSync(carpeta)
 }
-const SPREADSHEET_ID = '10UkDEN6ZN2gTwwg9L5Ly_Exwx9-F8Lx1_WJ5cHXRDo8'; // tu ID real
+const SPREADSHEET_ID = process.env.IDsheets; // tu ID real
 const HOJA = "'Junio Sem 4'";
 
 // Registro la fuente
