@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<body style="text-align:center;">
+    <h1>Generador de WOD Semanal</h1>
+
+    <h2>Vista previa</h2>
+    <div class="img">
+        <img id="preview" src="/preview.jpg?1234" style="max-width: 90%; border: 3px solid snow;" />
+    </div>
+
+    <button onclick="generar()">Generar imagen</button>
+    <p id="mensaje"></p>
+
+    <script>
+        async function generar() {
+            const mensaje = document.getElementById('mensaje');
+            mensaje.innerText = "Generando imágenes...";
+            const res = await fetch('/generar');
+            const data = await res.json();
+            mensaje.innerText = data.mensaje;
+
+            // Recargar la imagen con timestamp para evitar caché
+            const img = document.getElementById('preview');
+            img.src = '/preview.jpg?' + new Date().getTime();
+        }
+    </script>
+</body>
+
+</html>
